@@ -120,6 +120,21 @@ void drawbase(base *base)   //แสดงDD
 	else 			{gotoxy(base->posx,base->posy) ; cout<<"          " ;}
 }
 
+void BaseMovement(){
+	for(y=0;y<30;y++){
+    	for(x=0;x<100;x++){
+            if(gotoxy(x, y)=="=========="){
+                if(y>0){
+                    drawbase(x, y-1);
+                    erasebase(x, y);
+                }if(y==0){
+                	erasebase(x, y);
+				}
+			}
+		}
+	}	
+}
+
 void play()   
 {
 	double fps = 30 , ptime = time(0)-2 ;
