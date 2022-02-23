@@ -120,6 +120,12 @@ void drawbase(base *base)   //แสดงDD
 	else 			{gotoxy(base->posx,base->posy) ; cout<<"          " ;}
 }
 
+bool GameOver(){
+	int y;
+    if(DDposy == 0) return true;
+	else return false;
+}
+
 void play()   
 {
 	double fps = 30 , ptime = time(0)-2 ;
