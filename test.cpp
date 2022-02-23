@@ -175,6 +175,21 @@ void play()
 	}
 }
 
+void EndScreen(){
+	system("cls"); drawBorder();
+	gotoxy(10,6); cout << "------------------------------------------------------------------------- "<<endl;
+	gotoxy(10,8); cout << "|    *****      *     *       * ******       ****  *       ****** ****    |"<<endl;
+	gotoxy(10,9); cout << "|   *          * *    * *   * * *           *    *  *     * *     *   *   |"<<endl;
+	gotoxy(10,10); cout << "|   *  ****   *   *   *  * *  * *****       *    *   *   *  ****  ****    |"<<endl;
+	gotoxy(10,11); cout << "|   *  *  *  *******  *   *   * *           *    *    * *   *     * *     |"<<endl;
+	gotoxy(10,12); cout << "|    *****  *       * *       * ******       ****      *    ***** *   *   |"<<endl;
+	gotoxy(10,13); cout << " ------------------------------------------------------------------------- "<<endl;
+	gotoxy(10,15); //showscore();
+	gotoxy(10, 17); cout << "Press x to return to menu";
+	char op = getch();
+	if(op == 'x'){system("cls"); drawBordr(); menu();}
+}
+
 
 void menu(){
 		gotoxy(10,5); cout<<" -------------------------- "; 
@@ -187,6 +202,7 @@ void menu(){
 }
 
 void instructions(){
+	system("cls"); drawBorder();
 	gotoxy(10,6); cout << "Instructions";
 	gotoxy(10,8); cout << "Climb up high to gain points.";
 	gotoxy(10,9); cout << "The base will be removed when you once step on it.";
@@ -211,7 +227,7 @@ int main()
 
 		char op = getche();
 		     if( op=='1') { system("cls"); drawBorder(); play(); }
-		else if( op=='2') {system("cls"); drawBorder(); instructions();}
+		else if( op=='2') {instructions();}
 		else if( op=='3') exit(0);
 
 	}while(1);
