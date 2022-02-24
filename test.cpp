@@ -216,29 +216,58 @@ void play()
 }
 
 
-int main()
-{
-	setcursor(0,0); 
-	srand( (unsigned)time(NULL)); 
-
-    do{
-		system("cls");
-        drawBorder();
+void menu(){
 		gotoxy(10,5); cout<<" -------------------------- "; 
 		gotoxy(10,6); cout<<" |      test.exe       | "; 
 		gotoxy(10,7); cout<<" --------------------------";
 		gotoxy(10,9); cout<<"1. Start Game";
 		gotoxy(10,10); cout<<"2. Instructions";	 
 		gotoxy(10,11); cout<<"3. Quit";
-		gotoxy(10,13); cout<<"Select option: ";
+}
 
+void EndScreen(){
+	system("cls"); drawBorder();
+	gotoxy(10,6); cout << "------------------------------------------------------------------------- "<<endl;
+	gotoxy(10,8); cout << "|    *****      *     *       * ******       ****  *       ****** ****    |"<<endl;
+	gotoxy(10,9); cout << "|   *          * *    * *   * * *           *    *  *     * *     *   *   |"<<endl;
+	gotoxy(10,10); cout << "|   *  ****   *   *   *  * *  * *****       *    *   *   *  ****  ****    |"<<endl;
+	gotoxy(10,11); cout << "|   *  *  *  *******  *   *   * *           *    *    * *   *     * *     |"<<endl;
+	gotoxy(10,12); cout << "|    *****  *       * *       * ******       ****      *    ***** *   *   |"<<endl;
+	gotoxy(10,13); cout << " ------------------------------------------------------------------------- "<<endl;
+	gotoxy(10,15); //showscore();
+	gotoxy(10, 17); cout << "Press x to return to menu";
+	char op = getch();
+	if(op == 'x'){system("cls"); drawBorder(); menu();}
+}
+
+
+void instructions(){
+	system("cls"); drawBorder();
+	gotoxy(10,6); cout << "Instructions";
+	gotoxy(10,8); cout << "Climb up high to gain points.";
+	gotoxy(10,9); cout << "The base will be removed when you once step on it.";
+	gotoxy(10,10); cout << "If you falling down the game is over.";
+	gotoxy(10,11); cout << "Along the journey,It will be items supporting you";
+	gotoxy(22,13); cout << "Press x to return to menu.";
+	char op = getche();
+	if(op == 'x'){system("cls"); drawBorder(); menu();}
+}
+
+int main()
+{
+	setcursor(0,0); 
+	srand( (unsigned)time(NULL)); 
+
+    do{
+		menu();
+		gotoxy(10,14); cout<<"Select option: ";
 
 		DDposx = 50 ;
 		DDposy = 35 ;
 
 		char op = getche();
-		     if( op=='1') { system("cls"); drawBorder(); play(); }
-		else if( op=='2') {drawDD(); getche();}
+		if( op=='1') { system("cls"); drawBorder(); play(); }
+		else if( op=='2') {drawDD(); getche(); instructions();}
 		else if( op=='3') exit(0);
 
 	}while(1);
